@@ -1,6 +1,8 @@
 var express = require('express')
 var cors = require('cors')
 var app = express()
+const dotenv = require('dotenv');
+dotenv.config();
 
 const mysql = require('mysql2');
 const QRCode = require('qrcode');
@@ -8,9 +10,9 @@ const generatePayload = require('promptpay-qr');
 const _ = require('lodash')
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'pet-house'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    database: process.env.DB_DATABASE
 });
 
 app.use(cors())
