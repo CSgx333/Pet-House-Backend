@@ -11,8 +11,8 @@ const _ = require('lodash')
 
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    database: process.env.DB_DATABASE
+    user: process.env.DB_USERNAME,
+    database: process.env.DB_DBNAME
 });
 
 app.use(cors())
@@ -88,7 +88,7 @@ app.get('/user_account', function(req, res) {
     });
 });
 
-app.listen(5000, function () {
+app.listen(process.env.PORT || 5000, function () {
     console.log('CORS-enabled web server listening on port 5000')
 })
 
